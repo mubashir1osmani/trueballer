@@ -16,10 +16,6 @@ targets:
     configFiles:
       Debug: Config/App.xcconfig
       Release: Config/App.xcconfig
-    entitlements:
-      path: StudyPlanner/StudyPlanner.entitlements
-      properties:
-        com.apple.developer.applesignin: [Default]
     info:
       path: StudyPlanner/Info.plist
       properties:
@@ -44,8 +40,8 @@ targets:
         GENERATE_INFOPLIST_FILE: true
         INFOPLIST_KEY_UILaunchScreen_Generation: true
         INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
-        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "StudyPlanner reads your calendars to find classes and deadlines. Ask AI can add calendar events only after you review and save a draft."
-        INFOPLIST_KEY_NSRemindersFullAccessUsageDescription: "Ask AI saves reminders to the Apple Reminders list you choose, only after you review and save a draft."
+        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "StudyPlanner reads your calendars to find classes, work shifts and deadlines so it can plan study time around them. It doesn't change your events."
+        CODE_SIGN_ENTITLEMENTS: $(SP_ENTITLEMENTS)
         SWIFT_VERSION: "5.10"
         TARGETED_DEVICE_FAMILY: "1"
         CURRENT_PROJECT_VERSION: 1

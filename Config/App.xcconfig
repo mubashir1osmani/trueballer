@@ -3,4 +3,7 @@
 API_BASE_URL = http:/$()/localhost:8787
 GOOGLE_IOS_CLIENT_ID =
 GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.unset
+// Sign in with Apple needs a paid Apple Developer team. Leave empty on a
+// personal team; set to StudyPlanner/StudyPlanner.entitlements once enrolled.
+SP_ENTITLEMENTS =
 #include? "Secrets.xcconfig"

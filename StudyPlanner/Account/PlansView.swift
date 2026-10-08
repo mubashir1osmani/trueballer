@@ -23,10 +23,10 @@ struct PlansView: View {
              perks: ["15 note reads a day", "Turn sticky notes into tasks", "Fast and light"],
              colors: [Color(white: 0.55), Color(white: 0.4)]),
         Tier(id: "plus", name: "Plus", price: "$4.99/mo", model: "Claude Sonnet",
-             perks: ["60 note reads a day", "Sharper deadline and course matching", "Weekly review of how your time went"],
+             perks: ["60 note reads a day", "Sharper deadline and course matching", "Weekly review of how your time went (coming soon)"],
              colors: [Color(red: 0.05, green: 0.55, blue: 0.50), Color(red: 0.20, green: 0.75, blue: 0.62)]),
         Tier(id: "pro", name: "Pro", price: "$9.99/mo", model: "Claude Opus",
-             perks: ["150 note reads a day", "Planning coach you can talk to", "Everything in Plus"],
+             perks: ["150 note reads a day", "Planning coach you can talk to (coming soon)", "Everything in Plus"],
              colors: [Color(red: 0.40, green: 0.25, blue: 0.85), Color(red: 0.75, green: 0.35, blue: 0.85)]),
     ]
 

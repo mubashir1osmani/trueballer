@@ -2,8 +2,8 @@ import EventKit
 import SwiftUI
 
 /// Wraps EKEventStore: permission, calendar listing, and event fetching.
-/// This reader never changes events. Explicit Ask AI saves live in
-/// PersonalScheduleService; the DEBUG seeder creates simulator samples.
+/// This reader never changes events; only the DEBUG seeder creates
+/// simulator samples.
 @MainActor
 final class CalendarService: ObservableObject {
     private let store = EKEventStore()
