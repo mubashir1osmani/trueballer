@@ -235,5 +235,6 @@ private struct AppTabBar: View {
         .environmentObject(CalendarService())
         .environmentObject(NotificationService())
         .environmentObject(FocusManager(activities: FocusLiveActivityService()))
+        .environmentObject(AccountStore())
         .modelContainer(for: [UserSettings.self, CalendarRule.self, TitleRule.self, StudyTask.self, FocusSession.self, StudyCourse.self, GradeEntry.self, BrainNote.self], inMemory: true)
 }

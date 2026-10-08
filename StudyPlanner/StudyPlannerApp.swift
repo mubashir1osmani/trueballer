@@ -5,6 +5,7 @@ import SwiftData
 struct StudyPlannerApp: App {
     @StateObject private var calendarService = CalendarService()
     @StateObject private var notificationService = NotificationService()
+    @StateObject private var account = AccountStore()
     @StateObject private var focusManager = FocusManager(activities: FocusLiveActivityService())
 
     var body: some Scene {
@@ -13,6 +14,8 @@ struct StudyPlannerApp: App {
                 .environmentObject(calendarService)
                 .environmentObject(notificationService)
                 .environmentObject(focusManager)
+                .environmentObject(account)
+                .task { await account.refresh() }
                 #if DEBUG
                 .task {
                     calendarService.clearSampleDataIfRequested()

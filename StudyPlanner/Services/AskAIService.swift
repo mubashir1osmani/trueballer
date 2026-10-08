@@ -4,6 +4,24 @@ import FoundationModels
 #endif
 
 enum AskAIService {
+    /// Claude when the student is signed in and agreed, else on device.
+    static func captureTasks(from prompt: String, courses: [StudyCourse], account: AccountStore) async throws -> [TaskDraft] {
+        let trimmed = prompt.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else { throw DraftError.message("Describe an assignment first.") }
+        guard trimmed.count <= 2_000 else { throw DraftError.message("Keep your note under 2,000 characters.") }
+        await MainActor.run { account.lastNotice = nil }
+        if let drafts = try await CloudAI.captureTasks(trimmed, courses: courses, account: account) { return drafts }
+        return try await captureTasks(from: trimmed, courses: courses)
+    }
+
+    static func readBraindump(_ text: String, courses: [StudyCourse], account: AccountStore) async -> BraindumpReading {
+        let clipped = String(text.trimmingCharacters(in: .whitespacesAndNewlines).prefix(BraindumpOrganizer.maximumCharacters))
+        guard !clipped.isEmpty else { return BraindumpReading() }
+        await MainActor.run { account.lastNotice = nil }
+        if let reading = await CloudAI.readBraindump(clipped, courses: courses, account: account) { return reading }
+        return await readBraindump(clipped, courses: courses)
+    }
+
     static var isAvailable: Bool {
         #if canImport(FoundationModels)
         if #available(iOS 26.0, *) { return SystemLanguageModel.default.availability == .available }
@@ -162,7 +180,7 @@ enum AskAIService {
         return fallback
     }
 
-    private static func recognizedPlan(
+    static func recognizedPlan(
         studyTime: String,
         blockMinutes: Int,
         dailyCapMinutes: Int,

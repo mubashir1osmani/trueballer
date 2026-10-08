@@ -303,6 +303,7 @@ private struct OrganizeBraindumpSheet: View {
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var modelContext
     @EnvironmentObject private var notifications: NotificationService
+    @EnvironmentObject private var account: AccountStore
     @Query private var savedTasks: [StudyTask]
 
     var request: OrganizeRequest
@@ -510,7 +511,7 @@ private struct OrganizeBraindumpSheet: View {
             .joined(separator: "\n")
         let courseList = courses
         job = Task {
-            let reading = await AskAIService.readBraindump(text, courses: courseList)
+            let reading = await AskAIService.readBraindump(text, courses: courseList, account: account)
             guard !Task.isCancelled else { return }
             drafts = reading.tasks
             plan = reading.plan

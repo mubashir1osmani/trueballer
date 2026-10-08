@@ -13,15 +13,29 @@ targets:
       - Shared
     dependencies:
       - target: FocusActivity
+    configFiles:
+      Debug: Config/App.xcconfig
+      Release: Config/App.xcconfig
+    entitlements:
+      path: StudyPlanner/StudyPlanner.entitlements
+      properties:
+        com.apple.developer.applesignin: [Default]
     info:
       path: StudyPlanner/Info.plist
       properties:
+        APIBaseURL: $(API_BASE_URL)
+        GoogleClientID: $(GOOGLE_IOS_CLIENT_ID)
+        GoogleRedirectScheme: $(GOOGLE_REVERSED_CLIENT_ID)
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         NSSupportsLiveActivities: true
         CFBundleURLTypes:
           - CFBundleURLSchemes:
               - studyplanner
+          - CFBundleURLSchemes:
+              - $(GOOGLE_REVERSED_CLIENT_ID)
     settings:
       base:
         DEVELOPMENT_TEAM: SN95YBF5Z3
