@@ -48,10 +48,28 @@ final class NotificationService: ObservableObject {
                 [.year, .month, .day, .hour, .minute], from: fireDate)
             let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
             center.add(UNNotificationRequest(
-                identifier: "task-\(task.persistentModelID.hashValue)",
+                identifier: "task-\(task.id.uuidString)",
                 content: content,
                 trigger: trigger
             ))
         }
+    }
+}
+
+extension NotificationService {
+    /// Lightweight migration can give every pre-existing task the same default
+    /// UUID. Reminder IDs must be unique, so reassign any repeats.
+    @discardableResult
+    static func repairDuplicateIDs(_ tasks: [StudyTask]) -> Bool {
+        var seen = Set<UUID>()
+        var changed = false
+        for task in tasks.sorted(by: { $0.createdAt < $1.createdAt }) {
+            if !seen.insert(task.id).inserted {
+                task.id = UUID()
+                seen.insert(task.id)
+                changed = true
+            }
+        }
+        return changed
     }
 }

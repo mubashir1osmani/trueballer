@@ -86,9 +86,11 @@ struct RootView: View {
                 Task { await focus.restore(context: modelContext) }
             }
         }
-        .onChange(of: tasks.map(\.isCompleted)) {
+        .onChange(of: tasks.map(\.isCompleted)) { finishCompletedSessionIfNeeded() }
+        // One place keeps reminders current: add, complete, reschedule, snooze,
+        // lead-time and toggle changes all change this signature.
+        .onChange(of: reminderSignature, initial: true) {
             if let settings = settings.first { notifications.sync(tasks: tasks, settings: settings) }
-            finishCompletedSessionIfNeeded()
         }
         .onChange(of: focus.isBusy) {
             // Also reconcile if Today changed while an ActivityKit update was
@@ -120,6 +122,13 @@ struct RootView: View {
         return Classifier.groups(events: events, calendarRules: calendarRules, titleRules: titleRules)
     }
 
+    private var reminderSignature: [String] {
+        let prefs = settings.first.map { "\($0.remindersEnabled):\($0.reminderLeadMinutes)" } ?? ""
+        return [prefs, "\(notifications.authorizationStatus.rawValue)"] + tasks.map {
+            "\($0.id):\($0.isCompleted):\($0.dueDate?.timeIntervalSince1970 ?? 0):\($0.snoozedUntil?.timeIntervalSince1970 ?? 0):\($0.title)"
+        }.sorted()
+    }
+
     private var catalogSignature: [String] {
         discoveredGroups.map { "\($0.id):\($0.tag?.rawValue ?? "")" }.sorted()
         + tasks.map { "\($0.courseName ?? ""):\($0.courseID?.uuidString ?? "")" }.sorted()
@@ -139,6 +148,7 @@ struct RootView: View {
         if count == 0 {
             modelContext.insert(UserSettings())
         }
+        if NotificationService.repairDuplicateIDs(tasks) { try? modelContext.save() }
         seedSampleRulesIfRequested()
     }
 

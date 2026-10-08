@@ -3,6 +3,8 @@ import SwiftData
 
 @Model
 final class StudyTask {
+    /// Stable identity for notification requests; additive so old stores migrate.
+    var id: UUID = UUID()
     var title: String
     var dueDate: Date?
     /// Display title of the course group this belongs to, if any.

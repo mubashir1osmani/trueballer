@@ -58,6 +58,7 @@
 		E41B63AEF20AB639EC29EC8E /* GradeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C480C91A1AE8DF5101D796B8 /* GradeEntry.swift */; };
 		E5A6ADA23804737A02A8C34E /* TaskCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D78585D48185D53D911A0B /* TaskCapture.swift */; };
 		E6DFD67F049D7D0A6DF74238 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C31F0BB4761C51574594453 /* Planner.swift */; };
+		EB0D78C086052B68183410D4 /* ReminderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85539133798E37FC252E396 /* ReminderTests.swift */; };
 		F1CF006261C9CEBF719C437B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BD5E438808B930D9401EDF /* SettingsView.swift */; };
 		F348C5E50C72ABD96C47E39F /* CalendarScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C82289FA02DE878D8C6C45 /* CalendarScreen.swift */; };
 		F69132CBDE38F357B283D8CA /* DeadlineDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CA6448161DACDF5B7D74E6 /* DeadlineDetector.swift */; };
@@ -142,6 +143,7 @@
 		B13EDEC45A052B9EC38352B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		B26601B73EB61E7D9EDC61DA /* PlanMyWayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanMyWayView.swift; sourceTree = "<group>"; };
 		B64EF1E9318655E7CCE8424B /* FocusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTests.swift; sourceTree = "<group>"; };
+		B85539133798E37FC252E396 /* ReminderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderTests.swift; sourceTree = "<group>"; };
 		B970C39EEAF5F695941457B4 /* BraindumpOrganizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraindumpOrganizer.swift; sourceTree = "<group>"; };
 		BDFA6D725AA79FE5DC00242A /* FocusFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusFlowTests.swift; sourceTree = "<group>"; };
 		BE72AB2DC890BEFD86497838 /* StudyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyTask.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				CE1F712F31CAC1E0A6D54765 /* BraindumpTests.swift */,
 				B64EF1E9318655E7CCE8424B /* FocusTests.swift */,
 				483A129CDD48D33BBFF67BCE /* PlanStyleTests.swift */,
+				B85539133798E37FC252E396 /* ReminderTests.swift */,
 				CE241F3F6C9ACF43AB9CE261 /* ScheduleTests.swift */,
 				D0ED1EFECE4BCC426946C499 /* TaskCaptureTests.swift */,
 				9FC80A51ABC5DB371E9B452D /* WeekPlannerTests.swift */,
@@ -448,6 +451,7 @@
 				606134EE332BE8FEADAD8714 /* BraindumpTests.swift in Sources */,
 				A657D84A81C07CC60B1300C4 /* FocusTests.swift in Sources */,
 				854DBC1A7EDE5124E9A81739 /* PlanStyleTests.swift in Sources */,
+				EB0D78C086052B68183410D4 /* ReminderTests.swift in Sources */,
 				5A585C38F15E9E6477958255 /* ScheduleTests.swift in Sources */,
 				7B2D984221C149E716904657 /* TaskCaptureTests.swift in Sources */,
 				A1BA49978DC810417FEB0356 /* WeekPlannerTests.swift in Sources */,
