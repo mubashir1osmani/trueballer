@@ -22,7 +22,7 @@
 	"vars": {
 		"APPLE_BUNDLE_ID": "com.mubashir.StudyPlanner",
 		// iOS OAuth client ID from Google Cloud Console. Fill in before enabling Google sign-in.
-		"GOOGLE_IOS_CLIENT_ID": ""
+		"GOOGLE_IOS_CLIENT_ID": "992046171296-hha37e05av4lsivpa5p1n0kbe9bc2h1r.apps.googleusercontent.com"
 	}
 	// Secrets (set with `npx wrangler secret put <NAME>`, never committed):
 	//   ANTHROPIC_API_KEY  - Claude API key
