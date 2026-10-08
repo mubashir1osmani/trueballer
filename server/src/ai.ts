@@ -60,9 +60,28 @@ export type AIOutcome<T> =
   | { ok: true; value: T; usage: { input: number; output: number } }
   | { ok: false; reason: "declined" | "incomplete" };
 
+// The next seven local dates by weekday, so "by Wed" is a lookup rather
+// than date arithmetic, which small models get wrong.
+export function upcomingDays(now: string, timeZone: string): string {
+  const start = new Date(now);
+  if (Number.isNaN(start.getTime())) return "";
+  try {
+    const format = new Intl.DateTimeFormat("en-CA", { timeZone, weekday: "long", year: "numeric", month: "2-digit", day: "2-digit" });
+    return Array.from({ length: 7 }, (_, i) => {
+      const parts = Object.fromEntries(format.formatToParts(new Date(start.getTime() + i * 86_400_000)).map((p) => [p.type, p.value]));
+      const label = i === 0 ? "today" : i === 1 ? "tomorrow" : `this coming ${parts.weekday}`;
+      return `${parts.weekday} ${parts.year}-${parts.month}-${parts.day} (${label})`;
+    }).join("; ");
+  } catch {
+    return "";
+  }
+}
+
 function userTurn(ctx: NoteContext) {
   const courses = ctx.courses.length ? ctx.courses.join(", ") : "None";
-  return `Current time: ${ctx.now}. Timezone: ${ctx.timeZone}. Courses: ${courses}.\n<note>\n${ctx.note}\n</note>`;
+  const days = upcomingDays(ctx.now, ctx.timeZone);
+  const calendar = days ? `\nNext 7 days: ${days}. Map a weekday the student names to the matching date above.` : "";
+  return `Current time: ${ctx.now}. Timezone: ${ctx.timeZone}. Courses: ${courses}.${calendar}\n<note>\n${ctx.note}\n</note>`;
 }
 
 // Haiku 4.5 does not take effort or adaptive thinking; the 5.5 models do.

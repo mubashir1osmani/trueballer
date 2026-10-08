@@ -44,6 +44,7 @@
 		854DBC1A7EDE5124E9A81739 /* PlanStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483A129CDD48D33BBFF67BCE /* PlanStyleTests.swift */; };
 		8C367559BA3EBD0017DF0EC1 /* BraindumpOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B970C39EEAF5F695941457B4 /* BraindumpOrganizer.swift */; };
 		8D29C98940A3E42826537785 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A56C01F60C95B056975A7A0 /* Keychain.swift */; };
+		92AAE662777631A7A09B8BBB /* AccountFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7D812DDC38BF0832E20C29 /* AccountFlowTests.swift */; };
 		972BC1344B2EB1B3B9FE0E4F /* GradeEditors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A888DE8CEBC588B86144978C /* GradeEditors.swift */; };
 		9D867E5D6BB5CC13EF8B044C /* BrainNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33BBCA8740D15DDBC0A2FBE /* BrainNote.swift */; };
 		9EE952503B7860647CA3A6AC /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9227140AC3B7CC784637DB /* CalendarService.swift */; };
@@ -172,6 +173,7 @@
 		D0ED1EFECE4BCC426946C499 /* TaskCaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCaptureTests.swift; sourceTree = "<group>"; };
 		D829E4E8D624BE4D06E84DE1 /* PlanStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanStyle.swift; sourceTree = "<group>"; };
 		DC61B64321EA84023D95CFCD /* BraindumpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraindumpView.swift; sourceTree = "<group>"; };
+		DE7D812DDC38BF0832E20C29 /* AccountFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountFlowTests.swift; sourceTree = "<group>"; };
 		E1D78585D48185D53D911A0B /* TaskCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCapture.swift; sourceTree = "<group>"; };
 		E2849F5DA48DB042B236912B /* FocusActivity.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = FocusActivity.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2F311302CA0DB7AEE2A164E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 		922B892A0E36806B4B4263D2 /* StudyPlannerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DE7D812DDC38BF0832E20C29 /* AccountFlowTests.swift */,
 				BDFA6D725AA79FE5DC00242A /* FocusFlowTests.swift */,
 				64DE89DBD950516D63CFDEA6 /* ProgressFlowTests.swift */,
 			);
@@ -503,6 +506,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92AAE662777631A7A09B8BBB /* AccountFlowTests.swift in Sources */,
 				745360BF567F0C48E9FA0D18 /* FocusFlowTests.swift in Sources */,
 				49906E58DFD0B2FDD3AA5101 /* ProgressFlowTests.swift in Sources */,
 			);

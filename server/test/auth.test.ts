@@ -91,3 +91,20 @@ describe("plans", () => {
     expect(planFor(null, null).model).toBe("claude-haiku-4-5");
   });
 });
+
+import { upcomingDays } from "../src/ai";
+
+describe("upcomingDays", () => {
+  it("lists local dates by weekday in the student's timezone", () => {
+    const days = upcomingDays("2026-10-08T00:10:00-04:00", "America/New_York");
+    expect(days.startsWith("Thursday 2026-10-08 (today); Friday 2026-10-09 (tomorrow)")).toBe(true);
+    expect(days).toContain("Wednesday 2026-10-14 (this coming Wednesday)");
+    // 23:30 Wednesday in LA is already Thursday in UTC; today must stay Wednesday.
+    expect(upcomingDays("2026-10-07T23:30:00-07:00", "America/Los_Angeles").startsWith("Wednesday 2026-10-07 (today)")).toBe(true);
+  });
+
+  it("returns empty for a bad time or zone instead of throwing", () => {
+    expect(upcomingDays("not a date", "UTC")).toBe("");
+    expect(upcomingDays("2026-10-08T00:10:00Z", "Mars/Olympus")).toBe("");
+  });
+});
