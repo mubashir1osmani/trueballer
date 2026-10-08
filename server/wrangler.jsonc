@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "studyplanner-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // Prompts and notes are never logged; keep observability to request metadata.
+  "observability": { "enabled": true, "head_sampling_rate": 1 },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "studyplanner",
+      // Replace after `npx wrangler d1 create studyplanner`.
+      "database_id": "00000000-0000-0000-0000-000000000000",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "vars": {
+    "APPLE_BUNDLE_ID": "com.mubashir.StudyPlanner",
+    // iOS OAuth client ID from Google Cloud Console. Fill in before enabling Google sign-in.
+    "GOOGLE_IOS_CLIENT_ID": ""
+  }
+  // Secrets (set with `npx wrangler secret put <NAME>`, never committed):
+  //   ANTHROPIC_API_KEY  - Claude API key
+  //   SESSION_SECRET     - 32+ random bytes, signs app session tokens
+}
