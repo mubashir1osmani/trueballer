@@ -84,6 +84,16 @@ struct SignInView: View {
             }
         }
         .onChange(of: account.isSignedIn) { if account.isSignedIn { dismiss() } }
+        #if DEBUG
+        .task {
+            // DEBUG: AUTO_GOOGLE=1 starts Google sign-in so a simulator run can
+            // exercise the web session without UI automation.
+            if ProcessInfo.processInfo.environment["AUTO_GOOGLE"] == "1" {
+                try? await Task.sleep(for: .seconds(1))
+                await account.signInWithGoogle()
+            }
+        }
+        #endif
         .alert("Sign-in", isPresented: Binding(get: { account.errorMessage != nil }, set: { if !$0 { account.errorMessage = nil } })) {
             Button("OK") { account.errorMessage = nil }
         } message: { Text(account.errorMessage ?? "") }

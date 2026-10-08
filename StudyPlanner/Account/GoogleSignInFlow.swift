@@ -67,16 +67,8 @@ final class GoogleSignInFlow: NSObject, ASWebAuthenticationPresentationContextPr
     }
 
     private func authenticate(url: URL, scheme: String) async throws -> URL {
-        try await withCheckedThrowingContinuation { continuation in
-            let session = ASWebAuthenticationSession(url: url, callbackURLScheme: scheme) { callback, error in
-                if let callback { continuation.resume(returning: callback) }
-                else if (error as? ASWebAuthenticationSessionError)?.code == .canceledLogin { continuation.resume(throwing: FlowError.cancelled) }
-                else { continuation.resume(throwing: FlowError.failed) }
-            }
-            session.presentationContextProvider = self
-            session.prefersEphemeralWebBrowserSession = true
-            session.start()
-        }
+        let result = await webAuthentication(url: url, scheme: scheme, anchor: self)
+        return try result.get()
     }
 
     nonisolated func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
@@ -91,4 +83,29 @@ private extension Data {
         base64EncodedString().replacingOccurrences(of: "+", with: "-")
             .replacingOccurrences(of: "/", with: "_").replacingOccurrences(of: "=", with: "")
     }
+}
+
+/// Runs ASWebAuthenticationSession without `withChecked*Continuation`.
+/// Built with Xcode 26, those link a Swift 6.2 runtime entry point that
+/// iOS 18.0 doesn't ship, so the app crashed the moment sign-in started.
+/// A stream delivers the one callback using API every iOS 17+ has.
+@MainActor
+private func webAuthentication(
+    url: URL, scheme: String, anchor: ASWebAuthenticationPresentationContextProviding
+) async -> Result<URL, GoogleSignInFlow.FlowError> {
+    let (stream, delivery) = AsyncStream.makeStream(of: Result<URL, GoogleSignInFlow.FlowError>.self, bufferingPolicy: .bufferingNewest(1))
+    let session = ASWebAuthenticationSession(url: url, callbackURLScheme: scheme) { callback, error in
+        if let callback { delivery.yield(.success(callback)) }
+        else if (error as? ASWebAuthenticationSessionError)?.code == .canceledLogin { delivery.yield(.failure(.cancelled)) }
+        else { delivery.yield(.failure(.failed)) }
+        delivery.finish()
+    }
+    session.presentationContextProvider = anchor
+    session.prefersEphemeralWebBrowserSession = true
+    if !session.start() {
+        delivery.yield(.failure(.failed))
+        delivery.finish()
+    }
+    for await result in stream { return result }
+    return .failure(.failed)
 }
