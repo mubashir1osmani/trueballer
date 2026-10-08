@@ -1,0 +1,93 @@
+name: StudyPlanner
+options:
+  bundleIdPrefix: com.mubashir
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+targets:
+  StudyPlanner:
+    type: application
+    platform: iOS
+    sources:
+      - StudyPlanner
+      - Shared
+    dependencies:
+      - target: FocusActivity
+    info:
+      path: StudyPlanner/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSSupportsLiveActivities: true
+        CFBundleURLTypes:
+          - CFBundleURLSchemes:
+              - studyplanner
+    settings:
+      base:
+        DEVELOPMENT_TEAM: SN95YBF5Z3
+        CODE_SIGN_STYLE: Automatic
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: true
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: UIInterfaceOrientationPortrait
+        INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription: "StudyPlanner reads your calendars to find classes and deadlines. Ask AI can add calendar events only after you review and save a draft."
+        INFOPLIST_KEY_NSRemindersFullAccessUsageDescription: "Ask AI saves reminders to the Apple Reminders list you choose, only after you review and save a draft."
+        SWIFT_VERSION: "5.10"
+        TARGETED_DEVICE_FAMILY: "1"
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 0.1.0
+  FocusActivity:
+    type: app-extension
+    platform: iOS
+    sources:
+      - FocusActivity
+      - Shared
+    info:
+      path: FocusActivity/Info.plist
+      properties:
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mubashir.StudyPlanner.FocusActivity
+        DEVELOPMENT_TEAM: SN95YBF5Z3
+        CODE_SIGN_STYLE: Automatic
+        SWIFT_VERSION: "5.10"
+        TARGETED_DEVICE_FAMILY: "1"
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 0.1.0
+        SKIP_INSTALL: true
+        APPLICATION_EXTENSION_API_ONLY: true
+  StudyPlannerTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - StudyPlannerTests
+    dependencies:
+      - target: StudyPlanner
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        SWIFT_VERSION: "5.10"
+  StudyPlannerUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - StudyPlannerUITests
+    dependencies:
+      - target: StudyPlanner
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: true
+        SWIFT_VERSION: "5.10"
+schemes:
+  StudyPlanner:
+    build:
+      targets:
+        StudyPlanner: all
+    test:
+      targets:
+        - StudyPlannerTests
+        - StudyPlannerUITests

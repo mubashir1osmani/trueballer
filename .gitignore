@@ -1,0 +1,8 @@
+.DS_Store
+xcuserdata/
+DerivedData/
+*.xcuserstate
+server/node_modules/
+server/.wrangler/
+server/.dev.vars
+Config/Secrets.xcconfig
