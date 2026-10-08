@@ -401,12 +401,22 @@ private struct OrganizeBraindumpSheet: View {
         .accessibilityIdentifier("braindump.saved")
     }
 
+    private var sourceLabel: String {
+        guard usedAI else { return "Prepared from the words in your notes" }
+        return account.canUseCloudAI && account.lastNotice == nil ? "Read by Claude · check it before saving" : "Prepared with Apple Intelligence"
+    }
+
     private var review: some View {
         Form {
             Section {
-                Label(usedAI ? "Prepared with Apple Intelligence" : "Prepared from the words in your notes", systemImage: usedAI ? "sparkles" : "note.text")
+                Label(sourceLabel, systemImage: usedAI ? "sparkles" : "note.text")
                     .font(.footnote)
                     .foregroundStyle(.secondary)
+                if let notice = account.lastNotice {
+                    Label(notice.message, systemImage: "info.circle")
+                        .font(.footnote)
+                        .foregroundStyle(.orange)
+                }
                 if request.rereading {
                     Text("These notes were already organized. Saving again can add the same tasks.")
                         .font(.footnote)

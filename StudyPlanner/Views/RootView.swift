@@ -97,6 +97,15 @@ struct RootView: View {
             // in flight, or the app relaunched after that task was completed.
             finishCompletedSessionIfNeeded()
         }
+        #if DEBUG
+        .sheet(isPresented: .constant(ProcessInfo.processInfo.environment["PREVIEW_SHEET"] != nil)) {
+            switch ProcessInfo.processInfo.environment["PREVIEW_SHEET"] {
+            case "consent": ConsentView()
+            case "plans": PlansView()
+            default: SignInView()
+            }
+        }
+        #endif
         .onOpenURL { url in
             if url.scheme == "studyplanner", url.host == "focus" { selectedTab = .focus }
         }

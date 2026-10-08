@@ -37,6 +37,8 @@ private struct SettingsFormContent: View {
     @State private var showingProgress = false
 
     var body: some View {
+        AccountSection()
+
         Section {
             Button { showingProgress = true } label: {
                 Label("Grades and progress", systemImage: "chart.line.uptrend.xyaxis")
@@ -127,4 +129,64 @@ private struct SettingsFormContent: View {
 #Preview {
     SettingsView()
         .modelContainer(for: [UserSettings.self], inMemory: true)
+}
+
+/// Sign-in, plan, the Claude switch, and account deletion.
+private struct AccountSection: View {
+    @EnvironmentObject private var account: AccountStore
+    @State private var showingSignIn = false
+    @State private var showingPlans = false
+    @State private var showingConsent = false
+    @State private var confirmingDelete = false
+
+    var body: some View {
+        Section {
+            if account.isSignedIn {
+                Button { showingPlans = true } label: {
+                    HStack {
+                        Label("Plan", systemImage: "sparkles")
+                        Spacer()
+                        Text(account.me?.plan.name ?? "Free").foregroundStyle(.secondary)
+                        Image(systemName: "chevron.right").font(.caption.weight(.semibold)).foregroundStyle(.tertiary)
+                    }
+                }
+                .foregroundStyle(.primary)
+                .accessibilityIdentifier("account.plans")
+                Toggle("Claude reads my notes", isOn: claudeBinding)
+                    .accessibilityIdentifier("account.cloudAI")
+                Button("Sign out") { account.signOut() }
+                Button("Delete account", role: .destructive) { confirmingDelete = true }
+            } else {
+                Button { showingSignIn = true } label: {
+                    Label("Sign in to use Claude", systemImage: "person.crop.circle.badge.plus")
+                }
+                .accessibilityIdentifier("account.signin")
+            }
+        } header: {
+            Text("Account")
+        } footer: {
+            Text(account.isSignedIn
+                 ? "When on, notes you organize are sent to Claude. Tasks, grades, and your calendar always stay on this phone."
+                 : "Optional. Without an account, notes are read on this phone.")
+        }
+        .sheet(isPresented: $showingSignIn) { SignInView() }
+        .sheet(isPresented: $showingPlans) { PlansView() }
+        .sheet(isPresented: $showingConsent) { ConsentView() }
+        .confirmationDialog("Delete your account?", isPresented: $confirmingDelete, titleVisibility: .visible) {
+            Button("Delete account", role: .destructive) { Task { await account.deleteAccount() } }
+        } message: {
+            Text("This removes your sign-in, plan and usage history from our server. Your tasks and notes on this phone are not affected.")
+        }
+        .onChange(of: account.isSignedIn) { if account.needsConsent { showingConsent = true } }
+        .onChange(of: account.me) { if account.needsConsent && account.cloudAIEnabled { showingConsent = true } }
+    }
+
+    private var claudeBinding: Binding<Bool> {
+        Binding {
+            account.cloudAIEnabled && account.me?.aiConsent == true
+        } set: { on in
+            account.cloudAIEnabled = on
+            if on && account.me?.aiConsent != true { showingConsent = true }
+        }
+    }
 }

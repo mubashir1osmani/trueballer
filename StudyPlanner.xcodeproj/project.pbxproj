@@ -10,6 +10,7 @@
 		01333E2F11BE78D18B43CB5E /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12B57575FC5DC254BF09FAFC /* Classifier.swift */; };
 		09827BE4C1DE52B68FBB6AD5 /* WeekPlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCB7BDB69FEF9C2AE389BFAB /* WeekPlanner.swift */; };
 		0AAFC8F143666D7FEEF7A772 /* BraindumpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC61B64321EA84023D95CFCD /* BraindumpView.swift */; };
+		0E9BA7CC0682E618FCD97D85 /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30897EE0F2C9F01D27E7D3BB /* SignInView.swift */; };
 		111E732CAF02154B8183DCA6 /* StudyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE72AB2DC890BEFD86497838 /* StudyTask.swift */; };
 		11CBCDA68B0707DDE54B9333 /* PlaceholderScreens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 928FD168B12ED78E61A6375D /* PlaceholderScreens.swift */; };
 		13D3E8ECAA240A18A46D79C9 /* TodayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9827396BADCE8C7FB807ADE4 /* TodayScreen.swift */; };
@@ -25,6 +26,7 @@
 		49906E58DFD0B2FDD3AA5101 /* ProgressFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64DE89DBD950516D63CFDEA6 /* ProgressFlowTests.swift */; };
 		4DF6049229543303A531F5C5 /* FocusSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A258411B13C0FBD018382CA2 /* FocusSession.swift */; };
 		521ED890726BA42753CE53F2 /* FocusActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CC233E3377C8E2758C0E62E /* FocusActivityAttributes.swift */; };
+		523A5EC8E64D65A1A413509E /* PlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AB6B830F175158E4D034D4 /* PlansView.swift */; };
 		56DEB24DDEADCD9657B777BD /* ScheduleDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC44941D410A53E219983F8 /* ScheduleDraft.swift */; };
 		5A585C38F15E9E6477958255 /* ScheduleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE241F3F6C9ACF43AB9CE261 /* ScheduleTests.swift */; };
 		606134EE332BE8FEADAD8714 /* BraindumpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1F712F31CAC1E0A6D54765 /* BraindumpTests.swift */; };
@@ -36,6 +38,7 @@
 		778D87FB504CA1AC899F4C0E /* GoogleSignInFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DB1EA59262CCA61E93A1AF7 /* GoogleSignInFlow.swift */; };
 		7B2D984221C149E716904657 /* TaskCaptureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0ED1EFECE4BCC426946C499 /* TaskCaptureTests.swift */; };
 		7D3091226BEA81AC9286FBF6 /* PlanMyWayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26601B73EB61E7D9EDC61DA /* PlanMyWayView.swift */; };
+		7D872C03E4B92F78624D05BA /* AuraBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F7982C7D3F8092C47EDE2B /* AuraBackground.swift */; };
 		7F3290022BD9F58B005E7EB4 /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C50A68ACC48D533D39354A2F /* AccountStore.swift */; };
 		8016E13E901DB4D1C95DFC25 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AFF0D8D77A5DF65FFFF7831 /* UserSettings.swift */; };
 		854DBC1A7EDE5124E9A81739 /* PlanStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 483A129CDD48D33BBFF67BCE /* PlanStyleTests.swift */; };
@@ -50,6 +53,7 @@
 		A657D84A81C07CC60B1300C4 /* FocusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64EF1E9318655E7CCE8424B /* FocusTests.swift */; };
 		AFFF5D44EEC4F8F827514BA1 /* CloudAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2509D3DE62D9436EA8A7B25D /* CloudAI.swift */; };
 		B3568C3F175CDBB8D8E6FA3F /* StudyPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CFD31558D63E25C9BC9AE6 /* StudyPlannerApp.swift */; };
+		BC1C83D3CF80A5C98A72895E /* ConsentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C744621D3E3745DB07AA1B96 /* ConsentView.swift */; };
 		BC7E86F31E26F4993F0A30DD /* FocusActivityWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B289295428EA4336A7D83D7 /* FocusActivityWidget.swift */; };
 		BD532BA06D5CB2B9FC7CAD4B /* CourseCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646892E3B4508145C24EDDC0 /* CourseCatalog.swift */; };
 		C27F5449C804B0BDF54B9834 /* FocusScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668BA1DF143113AE0B340E5 /* FocusScreen.swift */; };
@@ -121,6 +125,7 @@
 		2509D3DE62D9436EA8A7B25D /* CloudAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudAI.swift; sourceTree = "<group>"; };
 		26DAD265DD9080CC8FC98FCA /* StudyPlannerTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = StudyPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D9227140AC3B7CC784637DB /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		30897EE0F2C9F01D27E7D3BB /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		36BEB9DF4EFD24E6F63D229F /* FocusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusManager.swift; sourceTree = "<group>"; };
 		3B289295428EA4336A7D83D7 /* FocusActivityWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusActivityWidget.swift; sourceTree = "<group>"; };
 		3D2BE0D66C97B6A65D12D757 /* ReviewTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTagsView.swift; sourceTree = "<group>"; };
@@ -140,6 +145,8 @@
 		8AFF0D8D77A5DF65FFFF7831 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		8C31F0BB4761C51574594453 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		928FD168B12ED78E61A6375D /* PlaceholderScreens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderScreens.swift; sourceTree = "<group>"; };
+		92F7982C7D3F8092C47EDE2B /* AuraBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuraBackground.swift; sourceTree = "<group>"; };
+		93AB6B830F175158E4D034D4 /* PlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansView.swift; sourceTree = "<group>"; };
 		94CFD31558D63E25C9BC9AE6 /* StudyPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyPlannerApp.swift; sourceTree = "<group>"; };
 		96F1820340E59DE132BA4397 /* CalendarPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarPickerView.swift; sourceTree = "<group>"; };
 		9827396BADCE8C7FB807ADE4 /* TodayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayScreen.swift; sourceTree = "<group>"; };
@@ -160,6 +167,7 @@
 		C480C91A1AE8DF5101D796B8 /* GradeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeEntry.swift; sourceTree = "<group>"; };
 		C50A68ACC48D533D39354A2F /* AccountStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStore.swift; sourceTree = "<group>"; };
 		C6546D57C6042907CC462A45 /* StudyCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCourse.swift; sourceTree = "<group>"; };
+		C744621D3E3745DB07AA1B96 /* ConsentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsentView.swift; sourceTree = "<group>"; };
 		CCB7BDB69FEF9C2AE389BFAB /* WeekPlanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPlanner.swift; sourceTree = "<group>"; };
 		CE1F712F31CAC1E0A6D54765 /* BraindumpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BraindumpTests.swift; sourceTree = "<group>"; };
 		CE241F3F6C9ACF43AB9CE261 /* ScheduleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTests.swift; sourceTree = "<group>"; };
@@ -180,8 +188,12 @@
 			children = (
 				C50A68ACC48D533D39354A2F /* AccountStore.swift */,
 				46B30E80A27E9E65077870C5 /* APIClient.swift */,
+				92F7982C7D3F8092C47EDE2B /* AuraBackground.swift */,
+				C744621D3E3745DB07AA1B96 /* ConsentView.swift */,
 				1DB1EA59262CCA61E93A1AF7 /* GoogleSignInFlow.swift */,
 				5A56C01F60C95B056975A7A0 /* Keychain.swift */,
+				93AB6B830F175158E4D034D4 /* PlansView.swift */,
+				30897EE0F2C9F01D27E7D3BB /* SignInView.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -508,6 +520,7 @@
 				7F3290022BD9F58B005E7EB4 /* AccountStore.swift in Sources */,
 				29E98A83F429A05F73190B73 /* AppTheme.swift in Sources */,
 				D0CDF119657E0574AFE6C11C /* AskAIService.swift in Sources */,
+				7D872C03E4B92F78624D05BA /* AuraBackground.swift in Sources */,
 				9D867E5D6BB5CC13EF8B044C /* BrainNote.swift in Sources */,
 				8C367559BA3EBD0017DF0EC1 /* BraindumpOrganizer.swift in Sources */,
 				0AAFC8F143666D7FEEF7A772 /* BraindumpView.swift in Sources */,
@@ -517,6 +530,7 @@
 				A24D24FA832646C7F641B335 /* Classification.swift in Sources */,
 				01333E2F11BE78D18B43CB5E /* Classifier.swift in Sources */,
 				AFFF5D44EEC4F8F827514BA1 /* CloudAI.swift in Sources */,
+				BC1C83D3CF80A5C98A72895E /* ConsentView.swift in Sources */,
 				BD532BA06D5CB2B9FC7CAD4B /* CourseCatalog.swift in Sources */,
 				1C899718ABBDBA8027092F81 /* CoursesScreen.swift in Sources */,
 				F69132CBDE38F357B283D8CA /* DeadlineDetector.swift in Sources */,
@@ -535,12 +549,14 @@
 				7D3091226BEA81AC9286FBF6 /* PlanMyWayView.swift in Sources */,
 				325ACC65D2358DF89BD74CC8 /* PlanStyle.swift in Sources */,
 				E6DFD67F049D7D0A6DF74238 /* Planner.swift in Sources */,
+				523A5EC8E64D65A1A413509E /* PlansView.swift in Sources */,
 				D2E4A3AADBF608CC8456964A /* ProgressScreen.swift in Sources */,
 				CF5A057E69514C4CE323233B /* QuickAddView.swift in Sources */,
 				752E5DBB0035886ACF803032 /* ReviewTagsView.swift in Sources */,
 				701ECB98EB920A32C846F6B5 /* RootView.swift in Sources */,
 				56DEB24DDEADCD9657B777BD /* ScheduleDraft.swift in Sources */,
 				F1CF006261C9CEBF719C437B /* SettingsView.swift in Sources */,
+				0E9BA7CC0682E618FCD97D85 /* SignInView.swift in Sources */,
 				DBBF2938A4B52D52FB3FC727 /* StudyCourse.swift in Sources */,
 				B3568C3F175CDBB8D8E6FA3F /* StudyPlannerApp.swift in Sources */,
 				111E732CAF02154B8183DCA6 /* StudyTask.swift in Sources */,

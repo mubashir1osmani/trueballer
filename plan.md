@@ -26,6 +26,8 @@
 | 4 — GPA / Progress | done | 2026-09-27: manual grades, weighted average, trend, focus effort, entered GPA, at-risk boost on Today |
 | 5 — Smarter planning | done | 2026-09-27: week study blocks from tasks + calendar gaps + working hours + sleep; Ask AI drafts school tasks for review |
 
+| 6 — Claude + accounts | in progress | 2026-10-07: Workers API (Hono + D1), Apple/Google sign-in, consent, per-plan model + quota, Braindump reads via Claude first; sign-in/consent/plans UI. Paid upgrades not wired (StoreKit pending) |
+
 **Legend:** `not started` → `in progress` → `done`
 
 ---
@@ -90,6 +92,15 @@
 - [x] Surface at-risk courses into Today priority
 - **Done when:** "this course needs more time" from your data ✓
 
+### Phase 6 — Claude + accounts (reverses decisions 2 and 7)
+- Backend: `server/` Cloudflare Worker (Hono, TypeScript, `@anthropic-ai/sdk`), D1 database. Stores accounts, plan, consent time and daily usage counts only. Note text is never stored or logged.
+- Sign-in: Apple (native) and Google (ASWebAuthenticationSession + PKCE, no SDK). ID tokens verified server-side (issuer, audience, hashed nonce); the app gets a 30-day session token kept in the Keychain.
+- Plans (server is the source of truth, `server/src/plans.ts`): Free → `claude-haiku-4-5`, 15 reads/day; Plus → `claude-sonnet-5-5`, 60/day; Pro → `claude-opus-5-5`, 150/day.
+- Order of readers: Claude (signed in + consented + toggle on) → Apple Intelligence on device → date parser. Failures and used-up quotas fall back silently with a one-line notice.
+- Safety: Claude only suggests; the student confirms. No homework answers. Note text is treated as data. Consent screen before first use, toggle in Settings, in-app account deletion.
+- Ask AI screen removed; Braindump Organize is the AI entry point.
+- **Not done yet:** StoreKit purchases + server receipt verification (everyone stays Free until then), App Attest, privacy manifest, deploy.
+
 ### Phase 5 — Planner polish
 - [x] Suggest study blocks around work + sleep (from Settings + calendar gaps)
 - [x] Free-hours → GPA-protecting task picks
@@ -136,6 +147,7 @@
 - UI tests add and complete a uniquely named test task in the simulator; they preserve existing tasks and history.
 
 ## Changelog
+- 2026-10-07: Phase 6 started. Fixed stale reminders (stable task ID, resync on due/snooze/lead changes). Added Workers backend, Apple/Google sign-in, Claude reading with per-plan models, consent and plans UI. Removed Ask AI screen. Decisions 2 (no backend) and 7 (on-device only) are replaced by Phase 6.
 - 2026-09-26: Plan created from design brainstorm; Phase 1 reworked to calendar-first
 - 2026-09-26: Replatformed web → native iOS. Google OAuth/backend/auth removed in favor of EventKit + on-device SwiftData. Quick-add promoted to primary task path. Classification mechanism locked (rule-based). Supabase/Clerk decision obsolete.
 - 2026-09-26: Phase 0 built and verified in simulator.
